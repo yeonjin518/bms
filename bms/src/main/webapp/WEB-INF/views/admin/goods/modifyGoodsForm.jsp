@@ -76,11 +76,11 @@
 	   }
 	 }  
 	
-	 
+		 
 	 var cnt = 1;
 	 function fn_addFile(){
 		  $("#target_add_file").append("<br>"+"<input type='file' name='detailImage" + cnt + "' id='detailImage" + cnt + "'  onchange=readURL(this,'previewImage" + cnt + "') />");
-		  $("#target_add_file").append("<img id='previewImage" + cnt + " width=200 height=200/>");
+		  $("#target_add_file").append("<img id='previewImage" + cnt + "' width=200 height=200/>");
 		  $("#target_add_file").append("<input class='btn btn-info btn-xs' type='button' value='추가'  onClick=addNewImageFile('detailImage" + cnt + "','${imageFileList[0].goodsId}','detailImage')  />");
 		  cnt++;
 	 }
@@ -333,7 +333,7 @@
 								<tr id="${itemNum.count-1}">
 									<td>상세 이미지${itemNum.count-1 }</td>
 									<td>
-										<input type="file" name="detailImage" id="detailImage"
+										<input type="file" name="detailImage" id="detailImage${itemNum.count-1}"
 										onchange="readURL(this,'preview${itemNum.count}');" />
 										<input type="hidden" name="imageId" value="${item.imageId }" />
 										<br>
@@ -343,11 +343,10 @@
 									</td>
 									<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 									<td>
-										<input type="button" value="수정" class="btn btn-primary btn-xs" onClick="modifyImageFile('detailImage','${item.goodsId}','${item.imageId}','${item.fileType}')" />
+										<input type="button" value="수정" class="btn btn-primary btn-xs" onClick="modifyImageFile('detailImage${itemNum.count-1}','${item.goodsId}','${item.imageId}','${item.fileType}')" />
 										<input type="button" value="삭제" class="btn btn-danger btn-xs" onClick="deleteImageFile('${item.goodsId}','${item.imageId}','${item.fileName}','${itemNum.count-1}')" />
 									</td>
 								</tr>
-								
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
