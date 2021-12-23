@@ -19,6 +19,7 @@
 </c:choose>
 <script>
 
+
 	function fn_modify_goods(goodsId, attribute){
 		
 		var frm_mod_goods = document.frm_mod_goods;
