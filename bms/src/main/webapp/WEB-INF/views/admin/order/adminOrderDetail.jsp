@@ -51,7 +51,7 @@
 					</td>
 					<td><h2>${orderMap.orderGoodsQty}개</h2></td>
 					<td><h2>${orderMap.orderGoodsQty * orderMap.goodsSalesPrice}원 (10% 할인)</h2></td>
-					<td><h2>${orderMap.goodsDeliveryPrice}</h2></td>
+					<td><h2>${orderMap.goodsDeliveryPrice}원</h2></td>
 					<td><h2>${1500 * orderMap.orderGoodsQty }원</h2></td>
 					<td><h2>${orderMap.orderGoodsQty * orderMap.goodsSalesPrice + orderMap.goodsDeliveryPrice}원</h2></td>
 				</tr>
@@ -118,14 +118,24 @@
 					<td class="fixed_join">결제방법</td>
 					<td>${orderMap.payMethod } </td>
 				</tr>
-				<tr class="dot_line">
-					<td class="fixed_join">결제카드</td>
-					<td>${orderMap.cardComName}</td>
-				</tr>
-				<tr class="dot_line">
-					<td class="fixed_join">할부기간</td>
-					<td> ${orderMap.cardPayMonth }</td>
-				</tr>
+				<c:choose>
+					<c:when test="${orderMap.payMethod == '신용카드' }">
+						<tr class="dot_line">
+							<td class="fixed_join">결제카드</td>
+							<td>${orderMap.cardComName}</td>
+						</tr>
+						<tr class="dot_line">
+							<td class="fixed_join">할부기간</td>
+							<td> ${orderMap.cardPayMonth }</td>
+						</tr>
+					</c:when>
+					<c:when test="${orderMap.payMethod == '휴대폰결제(간편결제)' }">
+							<tr class="dot_line">
+								<td class="fixed_join">결제번호</td>
+								<td>${orderMap.payOrdererHpNum}</td>
+							</tr>
+					</c:when>
+				</c:choose>
 			</tbody>
 		</table>
 	</div>

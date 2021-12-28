@@ -91,11 +91,18 @@ public class MyPageController  {
 		String beginDate = "";
 		String endDate   = "";
 		
-		String [] tempDate = commonUtil.calcSearchPeriod(fixedSearchPeriod).split(",");
-		beginDate = tempDate[0];
-		endDate   = tempDate[1];
-		dateMap.put("beginDate" , beginDate);
-		dateMap.put("endDate" , endDate);
+		if(dateMap.get("beginDate") == null && dateMap.get("endDate") == null) {
+			String [] tempDate = commonUtil.calcSearchPeriod(fixedSearchPeriod).split(",");
+			beginDate = tempDate[0];
+			endDate   = tempDate[1];			
+			dateMap.put("beginDate" , beginDate);
+			dateMap.put("endDate" , endDate);
+		}
+		else {
+			beginDate = dateMap.get("beginDate");
+			endDate = dateMap.get("endDate");
+		}
+		
 		dateMap.put("memberId" , memberId);
 		List<OrderDto> myOrderHistList = myPageService.listMyOrderHistory(dateMap);
 		
@@ -114,7 +121,7 @@ public class MyPageController  {
 	}	
 	
 	
-	@RequestMapping(value="/cancelMyOrder.do" , method = RequestMethod.POST)
+	@RequestMapping(value="/cancelMyOrder.do" , method = RequestMethod.GET)
 	public ModelAndView cancelMyOrder(@RequestParam("orderId") String orderId)  throws Exception {
 		
 		ModelAndView mv = new ModelAndView();

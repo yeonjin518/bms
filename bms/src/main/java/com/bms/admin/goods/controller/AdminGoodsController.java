@@ -277,6 +277,25 @@ public class AdminGoodsController {
 		return new ResponseEntity<Object>(HttpStatus.OK);
 		
 	}
+	
+	@RequestMapping(value="/deleteGoods.do", method=RequestMethod.GET)
+	public ResponseEntity<String> deleteGoods(@RequestParam("goodsId") int goodsId, HttpServletRequest request) throws Exception {
+		
+		adminGoodsService.deleteGoods(goodsId);
+		
+		String fileName = Integer.toString(goodsId);
+		fileController.deleteFile(fileName);
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		String message= "<script>";
+			   message += " alert('제품이 삭제되었습니다.');";
+			   message +=" location.href='" + request.getContextPath() + "/admin/goods/adminGoodsMain.do';";
+			   message +="</script>";
+		
+		return new ResponseEntity<String>(message, responseHeaders, HttpStatus.OK);
+		
+	}
 
 	@RequestMapping(value="/goodsExcelExport.do" , method=RequestMethod.GET)
 	public void goodsExcelExport(HttpServletResponse response , @RequestParam Map<String, String> dateMap) throws Exception {

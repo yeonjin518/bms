@@ -19,7 +19,6 @@
 			</tr>
 			<tr>
 			    <td> ${myOrderInfo.orderId}</td>
-			    <td> <fmt:formatDate value="${myOrderInfo.payOrderTime}" pattern="yyyy-MM-dd"/></td>
 				<td class="goods_image">
 				  <a href="${contextPath}/goods/goodsDetail.do?goodsId=${myOrderInfo.goodsId }">
 				    <img width="50px" alt="img"  src="${contextPath}/thumbnails.do?goodsId=${myOrderInfo.goodsId}&fileName=${myOrderInfo.goodsFileName}">
@@ -32,9 +31,10 @@
 				</td>
 				<td><h2>${myOrderInfo.orderGoodsQty }개</h2></td>
 				<td><h2>${myOrderInfo.orderGoodsQty *myOrderInfo.goodsSalesPrice}원 (10% 할인)</h2></td>
-				<td><h2>0원</h2></td>
+				<td><h2>${myOrderInfo.goodsDeliveryPrice }원</h2></td>
 				<td><h2>${1500 * myOrderInfo.orderGoodsQty }원</h2></td>
 				<td><h2>${myOrderInfo.orderGoodsQty * myOrderInfo.goodsSalesPrice}원</h2></td>
+			    <td> <fmt:formatDate value="${myOrderInfo.payOrderTime}" pattern="yyyy-MM-dd"/></td>
 			</tr>
 		</tbody>
 	</table>
@@ -100,14 +100,24 @@
 					<td class="fixed_join">결제방법</td>
 					<td>${myOrderInfo.payMethod }</td>
 				</tr>
-				<tr class="dot_line">
-					<td class="fixed_join">결제카드</td>
-					<td>${myOrderInfo.cardComName}</td>
-				</tr>
-				<tr class="dot_line">
-					<td class="fixed_join">할부기간</td>
-					<td>${myOrderInfo.cardPayMonth }</td>
-				</tr>
+				<c:choose>
+					<c:when test="${myOrderInfo.payMethod == '신용카드' }">
+						<tr class="dot_line">
+							<td class="fixed_join">결제카드</td>
+							<td>${myOrderInfo.cardComName}</td>
+						</tr>
+						<tr class="dot_line">
+							<td class="fixed_join">할부기간</td>
+							<td>${myOrderInfo.cardPayMonth }</td>
+						</tr>
+					</c:when>
+					<c:when test="${myOrderInfo.payMethod == '휴대폰결제(간편결제)' }">
+							<tr class="dot_line">
+								<td class="fixed_join">결제번호</td>
+								<td>${myOrderInfo.payOrdererHpNum}</td>
+							</tr>
+					</c:when>
+				</c:choose>
 			</tbody>
 		</table>
 	</div>

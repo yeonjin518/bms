@@ -39,6 +39,48 @@
 		 });	
 		
 	});
+	
+		function form_check(){
+			
+			if($("#memberId").val() == ""){
+				alert("아이디를 입력하세요.");
+				return false;
+			}
+			
+			if($("#memberPw").val() == ""){
+				alert("비밀번호를 입력하세요.");
+				return false;
+			}
+			
+			if($("#memberPw").val() != $("#checkPw").val()){
+				alert("비밀번호가 일치하지 않습니다.");
+				return false;
+			}
+			
+			if($("#memberName").val() == ""){
+				alert("이름을 입력하세요.");
+				return false;
+			}
+			
+			if($("#hp1").val() == "" || $("#hp2").val() == "" || $("#hp3").val() == ""){
+				alert("핸드폰 번호를 입력하세요.");
+				return false;
+			}
+			
+			if($("#email1").val() == "" || $("#email2").val() == ""){
+				alert("이메일을 입력하세요.");
+				return false;
+			}
+			
+			if($("#zipcode").val() == "" || $("#roadAddress").val() == "" || $("#jibunAddress").val() == ""){
+				alert("주소를 입력하세요.");
+				return false;
+			}
+			
+			return true;
+			
+		}
+		
 </script>
 <style>
 	td:first-child {
@@ -48,7 +90,7 @@
 </style>
 </head>
 <body>
-	<form action="${contextPath}/member/addMember.do" method="post">
+	<form action="${contextPath}/member/addMember.do" onSubmit="return form_check()" method="post">
 	<h3>회원가입</h3>
 	<table class="table table-bordered table-hover">
 		<colgroup>
@@ -78,7 +120,7 @@
 	        	 <label class="small mb-1">비밀번호 확인</label>
 	        </td>
 	        <td>
-	        	<input class="form-control" type="password" placeholder="비밀번호를 입력하세요." />
+	        	<input class="form-control" id="checkPw" type="password" placeholder="비밀번호를 입력하세요." />
 	        </td>
         </tr>         
         <tr>
@@ -194,8 +236,8 @@
 					<option value="018">018</option>
 					<option value="019">019</option>
 				</select> - 
-				<input class="form-control"  size="10px"  type="text" name="hp2" style="display:inline; width:100px; padding:0"> - 
-				<input class="form-control"  size="10px"  type="text"name="hp3" style="display:inline; width:100px; padding:0"><br><br>
+				<input class="form-control"  size="10px"  type="text" id="hp2" name="hp2" style="display:inline; width:100px; padding:0"> - 
+				<input class="form-control"  size="10px"  type="text" id="hp3" name="hp3" style="display:inline; width:100px; padding:0"><br><br>
 				<input class="custom-control-input" id="smsstsYn" type="checkbox" name="smsstsYn"  value="Y" checked/>
                 <label for="smsstsYn" >BMS에서 발송하는 SMS 소식을 수신합니다.</label>
 	        </td>

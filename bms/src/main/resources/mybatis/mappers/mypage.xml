@@ -39,6 +39,7 @@
 		<result column="CARD_COM_NAME"  	property="cardComName"/>
 		<result column="CARD_PAY_MONTH"  	property="cardPayMonth"/>
 		<result column="DELIVERY_STATE"  	property="deliveryState"/>
+		<result column="GOODS_DELIVERY_PRICE"  	property="goodsDeliveryPrice"/>
 		<result column="FILE_NAME"  		property="goodsFileName"/>
 	</resultMap>
 	
@@ -70,6 +71,7 @@
 				O.CARD_COM_NAME 		AS CARD_COM_NAME,
 				O.CARD_PAY_MONTH 		AS CARD_PAY_MONTH,
 			    O.DELIVERY_STATE 		AS DELIVERY_STATE,
+			    G.GOODS_DELIVERY_PRICE	AS GOODS_DELIVERY_PRICE,
 	    		D.FILE_NAME 			AS FILE_NAME
  	    		 
 	    FROM 
@@ -88,8 +90,24 @@
 		  			* 
 		  FROM 
 		  			T_SHOPPING_ORDER
-          WHERE 
-					MEMBER_ID = #{memberId} AND TO_CHAR(PAY_ORDER_TIME,'yyyy-mm-dd') BETWEEN #{beginDate} AND #{endDate}
+          <where> 
+					MEMBER_ID = #{memberId} AND 
+					TO_CHAR(PAY_ORDER_TIME,'yyyy-mm-dd') BETWEEN #{beginDate} AND #{endDate}
+					<if test='searchType == "all"'>
+	                  AND (RECEIVER_NAME 	like '%'|| #{searchWord} || '%'
+	                   OR ORDERER_NAME 	like '%'|| #{searchWord} || '%'
+	                   OR ORDER_ID 	like '%'|| #{searchWord} || '%')
+	                </if>
+	                <if test='searchType == "receiverName"'>
+	                  AND RECEIVER_NAME LIKE '%'|| #{searchWord} || '%'
+	                </if>
+	                <if test='searchType == "ordererName"'>
+	                  AND ORDERER_NAME LIKE '%'|| #{searchWord} || '%'
+	                </if>
+	                <if test='searchType == "orderId"'>
+	                   AND ORDER_ID LIKE '%'|| #{searchWord} || '%'
+	                </if>
+		  </where>
           ORDER BY 
           			PAY_ORDER_TIME DESC
 	</select>	

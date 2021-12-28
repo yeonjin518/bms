@@ -17,5 +17,6 @@ public interface AdminGoodsService {
 	public void modifyGoodsImage(List<ImageFileDto> imageFileList) throws Exception;
 	public void removeGoodsImage(int imageId) throws Exception;
 	public void addNewGoodsImage(List<ImageFileDto>  imageFileList) throws Exception;
+	public void deleteGoods(int goodsId) throws Exception;
 	
 }

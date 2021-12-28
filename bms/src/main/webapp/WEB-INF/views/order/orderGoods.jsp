@@ -66,8 +66,8 @@
 		
 		var payOrdererHpNum = "해당없음";
 	  
-	    if ( $("#payMethod").val() == "휴대폰결제"){
-	    	payOrdererHpNum = $("#payOrderTel1").val(); + "-" + $("#payOrderTel2").val(); + "-" + $("#payOrderTel3").val(); 
+	    if ( $("input[name='payMethod']:checked").val() == "휴대폰결제(간편결제)"){
+	    	payOrdererHpNum = $("#payOrderTel1").val() + "-" + $("#payOrderTel2").val() + "-" + $("#payOrderTel3").val(); 
 	    }
 							  
 		var datas = {
@@ -83,7 +83,7 @@
 		    deliveryMethod  : $("#deliveryMethod").val(),
 		    orderGoodsQty   : $("#orderGoodsQty").val(),
 		    giftWrapping    : $("input[name='giftWrapping']:checked").val(),
-		    payMethod       : $("#payMethod").val(),
+		    payMethod       : $("input[name='payMethod']:checked").val(),
 		    cardComName     : $("#cardComName").val(),
 		    cardPayMonth    : $("#cardPayMonth").val(),
 		    payOrdererHpNum : payOrdererHpNum,
@@ -284,7 +284,7 @@
 			<tbody>
 				<tr class="dot_line" >
 					<td class="fixed_join">
-						<input type="radio" id="payMethod" name="payMethod" value="신용카드" onclick="fn_set_pay_method('card')" checked> 신용카드
+						<input type="radio" id="payMethod1" name="payMethod" value="신용카드" onclick="fn_set_pay_method('card')" checked> 신용카드
 					<td>
 					    카드 선택 : &nbsp;
 						  <select id="cardComName" name="cardComName">
@@ -313,7 +313,7 @@
 				</tr>
 				<tr class="dot_line" >
 					<td class="fixed_join">
-						<input type="radio" id="payMethod" name="payMethod" value="휴대폰결제(간편결제)" onclick="fn_set_pay_method('phone')"> 휴대폰 결제
+						<input type="radio" id="payMethod2" name="payMethod" value="휴대폰결제(간편결제)" onclick="fn_set_pay_method('phone')"> 휴대폰 결제
 					</td>
 					<td>
 					   휴대폰 번호 입력 : 

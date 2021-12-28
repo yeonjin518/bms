@@ -18,10 +18,95 @@
   
   
 	function fn_add_new_goods(obj){
+		
+		if($('#goodsTitle').val() == ""){
+			alert("제품 이름을 입력해야 합니다.");
+			return;
+		}
+		
+		if($('#goodsWriter').val() == ""){
+			alert("저자를 입력해야 합니다.");
+			return;
+		}
+		
+		if($('#goodsPublisher').val() == ""){
+			alert("출판사를 입력해야 합니다.");
+			return;
+		}
+		
+		if($('#goodsPrice').val() == ""){
+			alert("제품 정가를 입력해야 합니다.");
+			return;
+		}
+		
+		if($('#goodsSalesPrice').val() == ""){
+			alert("제품 판매가격을 입력해야 합니다.");
+			return;
+		}
+		
+		if($('#goodsPoint').val() == ""){
+			alert("제품 포인트를 입력해야 합니다.");
+			return;
+		}
+		
+		if($('#goodsPublishedDate').val() == ""){
+			alert("제품출판일을 입력해야 합니다.");
+			return;
+		}
+		
+		if($('#goodsTotalPage').val() == ""){
+			alert("제품 총 페이지수를 입력해야 합니다.");
+			return;
+		}
+		
+		if($('#goodsIsbn').val() == ""){
+			alert("ISBN을 입력해야 합니다.");
+			return;
+		}
+		
+		if($('#goodsDeliveryPrice').val() == ""){
+			alert("제품 배송비를 입력해야 합니다.");
+			return;
+		}
+		
+		if($('#goodsDeliveryDate').val() == ""){
+			alert("제품 도착 예정일을 입력해야 합니다.");
+			return;
+		}
+		
+		goodsContentsOrder = CKEDITOR.instances.goodsContentsOrder.getData();
+		if(goodsContentsOrder == ""){
+			alert("상품 목차를 입력해야 합니다.");
+			return;
+		}
+		
+		goodsWriterIntro = CKEDITOR.instances.goodsWriterIntro.getData();
+		if(goodsWriterIntro == ""){
+			alert("상품 저자소개를 입력해야 합니다.");
+			return;
+		}
+		
+		goodsIntro = CKEDITOR.instances.goodsIntro.getData();
+		if(goodsIntro == ""){
+			alert("상품 소개를 입력해야 합니다.");
+			return;
+		}
+		
+		goodsPublisherComment = CKEDITOR.instances.goodsPublisherComment.getData();
+		if(goodsPublisherComment == ""){
+			alert("출판사 상품 평가를 입력해야 합니다.");
+			return;
+		}
+		
+		goodsRecommendation = CKEDITOR.instances.goodsRecommendation.getData();
+		if(goodsRecommendation == ""){
+			alert("추천사를 입력해야 합니다.");
+			return;
+		}
 		 
 		fileName = $('#f_main_image').val();
 		 
-		if (fileName != null && fileName != undefined){
+		if (fileName != null && fileName != undefined && fileName != ""){
 			 obj.submit();
 		}
 		else {
@@ -76,47 +161,47 @@
 						 </tr>
 						<tr>
 							<td>제품 이름</td>
-							<td><input name="goodsTitle" type="text" class="form-control"/></td>
+							<td><input name="goodsTitle" id="goodsTitle" type="text" class="form-control"/></td>
 						</tr>
 						<tr>
 							<td >저자</td>
-							<td><input name="goodsWriter" type="text" class="form-control"/></td>
+							<td><input name="goodsWriter" id="goodsWriter" type="text" class="form-control"/></td>
 						</tr>
 						<tr>
 							<td>출판사</td>
-							<td><input name="goodsPublisher" type="text" class="form-control"/></td>
+							<td><input name="goodsPublisher" id="goodsPublisher" type="text" class="form-control"/></td>
 						</tr>
 						<tr>
 							<td>제품 정가</td>
-							<td><input name="goodsPrice" type="text" class="form-control"/></td>
+							<td><input name="goodsPrice" id="goodsPrice" type="text" class="form-control"/></td>
 						</tr>
 						<tr>
 							<td>제품 판매가격</td>
-							<td><input name="goodsSalesPrice" type="text" class="form-control"/></td>
+							<td><input name="goodsSalesPrice" id="goodsSalesPrice" type="text" class="form-control"/></td>
 						</tr>
 						<tr>
 							<td>제품 구매 포인트</td>
-							<td><input name="goodsPoint" type="text" class="form-control"/></td>
+							<td><input name="goodsPoint" id="goodsPoint" type="text" class="form-control"/></td>
 						</tr>
 						<tr>
 							<td>제품출판일</td>
-							<td><input  name="goodsPublishedDate" type="date" class="form-control"/></td>
+							<td><input  name="goodsPublishedDate" id="goodsPublishedDate" type="date" class="form-control"/></td>
 						</tr>
 						<tr>
 							<td>제품 총 페이지수</td>
-							<td><input name="goodsTotalPage" type="text" class="form-control"/></td>
+							<td><input name="goodsTotalPage" id="goodsTotalPage" type="text" class="form-control"/></td>
 						</tr>
 						<tr>
 							<td>ISBN</td>
-							<td><input name="goodsIsbn" type="text" class="form-control"/></td>
+							<td><input name="goodsIsbn" id="goodsIsbn" type="text" class="form-control"/></td>
 						</tr>
 						<tr>
 							<td>제품 배송비</td>
-							<td><input name="goodsDeliveryPrice" type="text" class="form-control"/></td>
+							<td><input name="goodsDeliveryPrice" id="goodsDeliveryPrice" type="text" class="form-control"/></td>
 						</tr>
 						<tr>
 							<td>제품 도착 예정일</td>
-							<td><input name="goodsDeliveryDate" type="date" class="form-control"/></td>
+							<td><input name="goodsDeliveryDate" id="goodsDeliveryDate" type="date" class="form-control"/></td>
 						</tr>
 					</table>	
 				</div>

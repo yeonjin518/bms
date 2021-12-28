@@ -58,6 +58,7 @@
 		<result column="PAY_METHOD" 		  property="payMethod"/>
 		<result column="CARD_COM_NAME" 		  property="cardComName"/>
 		<result column="CARD_PAY_MONTH" 	  property="cardPayMonth"/>
+		<result column="PAY_ORDERER_HP_NUM"   property="payOrdererHpNum"/>
 		<result column="DELIVERY_STATE" 	  property="deliveryState"/>
 		<result column="MEMBER_ID" 			  property="memberId"/>
 		<result column="MEMBER_NAME" 		  property="memberName"/>
@@ -91,6 +92,7 @@
 	    		O.PAY_METHOD,
 	    		O.CARD_COM_NAME,
 	    		O.CARD_PAY_MONTH,
+	    		O.PAY_ORDERER_HP_NUM,
 	    		O.DELIVERY_STATE,
 	    		M.MEMBER_ID,
 	    		M.MEMBER_NAME,

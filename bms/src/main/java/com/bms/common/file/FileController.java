@@ -115,6 +115,15 @@ public class FileController {
 		
 		File file = new File(CURR_IMAGE_REPO_PATH + seperatorPath + fileName);
 		
+		if(file.exists()) {
+			if(file.isDirectory()) {
+				File[] files = file.listFiles();
+				for (File file2 : files) {
+					file2.delete();
+				}
+			}
+		}
+		
 		try {
 			file.delete();
 		} catch (Exception e){

@@ -310,7 +310,7 @@
 	     </tr>
 		</c:when>
 	 	<c:otherwise>
-	     <c:forEach var="item" items="${newOrderList}">
+	     <c:forEach var="item" items="${newOrderList}" varStatus="status">
 	          	<tr>
 					<td width=10%><strong>${item.orderId}</strong></td>
 					<td width=20%><strong><fmt:formatDate value="${item.payOrderTime}" pattern="yyyy-MM-dd HH:mm"/> </strong> </td>
@@ -341,14 +341,14 @@
 						</c:if>
 					</td>
 					<td width=10%>
-						<select name="deliveryState" id="deliveryState">
+						<select name="deliveryState" id="deliveryState${status.index}">
 							<option value="deliveryPrepared" <c:if test="${item.deliveryState=='deliveryPrepared' }"> selected </c:if>>배송준비중</option>
 							<option value="delivering" <c:if test="${item.deliveryState=='delivering' }"> selected </c:if>>배송중</option>
 							<option value="finishedDelivering" <c:if test="${item.deliveryState=='finishedDelivering' }"> selected </c:if>>배송완료</option>
 							<option value="cancelOrder" <c:if test="${item.deliveryState=='cancelOrder' }"> selected </c:if>>주문취소</option>
 							<option value="returningGoods" <c:if test="${item.deliveryState=='returningGoods' }"> selected </c:if>>반품</option>
 						</select>
-						<input type="button" value="배송수정" class="btn btn-outline-blue btn-xs" onClick="fn_modify_order_state('${item.orderId}','s_deliveryState${i.index}')" />
+						<input type="button" value="배송수정" class="btn btn-outline-blue btn-xs" onClick="fn_modify_order_state('${item.orderId}','deliveryState${status.index}')" />
 					</td>				
 					</tr>
 				</c:forEach>

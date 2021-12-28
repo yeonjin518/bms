@@ -20,17 +20,7 @@
 		var answer = confirm("주문을 취소하시겠습니까?");
 		
 		if (answer) {
-			var formObj = document.createElement("form");
-			var i_orderId = document.createElement("input");
-			
-		    i_orderId.name = "orderId";
-		    i_orderId.value = orderId;
-			
-		    formObj.appendChild(i_orderId);
-		    document.body.appendChild(formObj); 
-		    formObj.method = "post";
-		    formObj.action = "${contextPath}/mypage/cancelMyOrder.do";
-		    formObj.submit();	
+		    location.href = "${contextPath}/mypage/cancelMyOrder.do?orderId=" + orderId;
 		}
 		
 	}
@@ -81,8 +71,11 @@
 					   <c:when test="${item.deliveryState == 'deliveryPrepared'}">
 					       <input type="button" onClick="fn_cancel_order('${item.orderId}')" class="btn btn-outline-primary btn-sm" value="취소"  />
 					   </c:when>
-					   <c:otherwise>
+					   <c:when test="${item.deliveryState == 'cancelOrder'}">
 					      <input type="button" onClick="fn_cancel_order('${item.orderId}')" class="btn btn-outline-primary btn-sm" value="취소됨" disabled />
+					   </c:when>
+					   <c:otherwise>
+					       <input type="button" onClick="fn_cancel_order('${item.orderId}')" class="btn btn-outline-primary btn-sm" value="취소" disabled />
 					   </c:otherwise>
 					  </c:choose>
 					</td>

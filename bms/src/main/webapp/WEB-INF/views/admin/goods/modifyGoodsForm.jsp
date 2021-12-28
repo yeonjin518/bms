@@ -255,6 +255,9 @@
 							<td><input type="button" value="수정" class="btn btn-outline-primary btn-sm" onClick="fn_modify_goods('${goods.goodsId}','goodsDeliveryDate')" /></td>
 						</tr>
 					</table>
+					<div align="right">
+						<input class="btn btn-primary btn-sm" type="button" onclick="location.href='${contextPath}/admin/goods/deleteGoods.do?goodsId=${goods.goodsId }'" value="상품 삭제">
+					</div>
 				</div>
 				<div class="tab_content" id="tab2">
 					<div class="form-group">

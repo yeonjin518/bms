@@ -18,5 +18,6 @@ public interface AdminGoodsDao {
 	public void updateGoodsInfo(Map<String,String> goodsMap) throws Exception;
 	public void updateGoodsImage(List<ImageFileDto> imageFileList) throws Exception;
 	public void deleteGoodsImage(int imageId) throws Exception;
+	public void deleteGoodsInfo(int goodsId) throws Exception;
 	
 }
