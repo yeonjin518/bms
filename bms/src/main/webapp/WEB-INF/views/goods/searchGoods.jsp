@@ -8,7 +8,7 @@
 </head>
 <body>
 	<hgroup>
-		<h1>컴퓨터와 인터넷</h1>
+		<h1>' ${searchWord } ' 검색 결과</h1>
 		<h2>오늘의 책</h2>
 	</hgroup>
 	<section id="new_book">

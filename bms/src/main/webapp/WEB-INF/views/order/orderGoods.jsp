@@ -133,9 +133,9 @@
 				  <h2>${goodsInfo.orderGoodsQty }개</h2>
 				    <input type="hidden" id="orderGoodsQty" name="orderGoodsQty" value="${goodsInfo.orderGoodsQty}" />
 				</td>
-				<td><h2>${goodsInfo.goodsSalesPrice}원 (10% 할인)</h2></td>
+				<td><h2>${goodsInfo.goodsSalesPrice}원 (${goodsInfo.salesPercent}% 할인)</h2></td>
 				<td><h2>${goodsInfo.goodsDeliveryPrice}원 </h2></td>
-				<td><h2>${1500 * goodsInfo.orderGoodsQty}원</h2></td>
+				<td><h2>${goodsInfo.goodsPoint * goodsInfo.orderGoodsQty}원</h2></td>
 				<td>
 				  <h2>${goodsInfo.goodsSalesPrice * goodsInfo.orderGoodsQty + goodsInfo.goodsDeliveryPrice}원</h2>
 				  <input type="hidden" id="totalOrderGoodsPrice" value="${goodsInfo.goodsSalesPrice * goodsInfo.orderGoodsQty + goodsInfo.goodsDeliveryPrice}">

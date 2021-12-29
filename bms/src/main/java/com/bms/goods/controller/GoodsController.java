@@ -39,9 +39,25 @@ public class GoodsController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/goods/searchGoods");
 		mv.addObject("goodsList", goodsService.searchGoods(searchWord));
+		mv.addObject("searchWord", searchWord);
 		
 		return mv;
 		
+	}
+	
+	@RequestMapping(value="/listGoods.do", method = RequestMethod.GET)
+	public ModelAndView listGoods(@RequestParam("goodsStatus") String goodsStatus) throws Exception {
+		
+		String gs = "";
+		if(goodsStatus.equals("bestseller"))	gs = "베스트셀러";
+		else if(goodsStatus.equals("steadyseller"))	gs = "스테디셀러";
+		else if(goodsStatus.equals("newbook"))	gs = "신간";
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/goods/listGoods");
+		mv.addObject("goodsList", goodsService.listGoods(goodsStatus));
+		mv.addObject("goodsStatus", gs);
+		
+		return mv;
 	}
 	
 }

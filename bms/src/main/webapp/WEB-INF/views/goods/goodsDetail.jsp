@@ -10,7 +10,7 @@
 <head>
 <script>
 	
-	function fn_order_each_goods(goodsId , goodsTitle , goodsSalesPrice , fileName , goodsDeliveryPrice){
+	function fn_order_each_goods(goodsId , goodsTitle , goodsSalesPrice , fileName , goodsDeliveryPrice, goodsPoint, salesPercent){
 	
 		var orderGoodsQty = document.getElementById("orderGoodsQty");
 		var isLogOn = document.getElementById("isLogOn").value;
@@ -28,6 +28,8 @@
 	    var i_goods_delivery_price = document.createElement("input");
 	    var i_fileName             = document.createElement("input");
 	    var i_order_goods_qty      = document.createElement("input");
+	    var i_goods_point	       = document.createElement("input");
+	    var i_sales_percent	       = document.createElement("input");
 	    
 	    i_goods_id.name          	= "goodsId";
 	    i_goods_title.name       	= "goodsTitle";
@@ -35,6 +37,8 @@
 	    i_fileName.name          	= "goodsFileName";
 	    i_order_goods_qty.name   	= "orderGoodsQty";
 	    i_goods_delivery_price.name = "goodsDeliveryPrice";
+	    i_goods_point.name			= "goodsPoint";
+	    i_sales_percent.name		= "salesPercent";
 	    
 	    i_goods_id.value         	 = goodsId;
 	    i_order_goods_qty.value  	 = orderGoodsQty.value;
@@ -42,6 +46,8 @@
 	    i_goods_sales_price.value 	 = goodsSalesPrice;
 	    i_fileName.value             = fileName;
 	    i_goods_delivery_price.value = goodsDeliveryPrice;
+	    i_goods_point.value			 = goodsPoint;
+	    i_sales_percent.value		 = salesPercent;
 	    
 	    formObj.appendChild(i_goods_id);
 	    formObj.appendChild(i_goods_title);
@@ -49,6 +55,8 @@
 	    formObj.appendChild(i_fileName);
 	    formObj.appendChild(i_order_goods_qty);
 	    formObj.appendChild(i_goods_delivery_price);
+	    formObj.appendChild(i_goods_point);
+	    formObj.appendChild(i_sales_percent);
 	
 	    document.body.appendChild(formObj); 
 	    formObj.method = "post";
@@ -75,13 +83,16 @@
 				<tr>
 					<td class="fixed">정가</td>
 					<td class="active"><span >
-					   <fmt:formatNumber value="${goods.goodsPrice}" type="number" var="goodsPrice" /> ${goodsPrice}원
+					   <fmt:formatNumber value="${goods.goodsPrice}" type="number" var="goodsPrice" /> ${goodsPrice}원</span>
 					</td>
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed">판매가</td>
 					<td class="active">
-						<fmt:formatNumber value="${goods.goodsPrice*0.9}" type="number" var="discountedPrice" /> ${discountedPrice}원(10%할인)
+						<fmt:parseNumber var="goodsSalesPrice" value="${goods.goodsSalesPrice}" type="number"  />
+						<fmt:parseNumber var="goodsPrice" value="${goods.goodsPrice}" type="number"  />							
+						<fmt:formatNumber value="${goods.goodsSalesPrice}" type="number" var="discountedPrice" /> ${discountedPrice}원
+				        (<fmt:formatNumber value="${100 - (goodsSalesPrice / goodsPrice * 100)}" pattern="##0" var="salesPercent" /> ${salesPercent}%할인)
 				    </td>
 				</tr>
 				<tr>
@@ -139,7 +150,7 @@
 			</tbody>
 		</table>
 		<ul>
-			<li><a class="buy" href="javascript:fn_order_each_goods('${goods.goodsId}','${goods.goodsTitle}','${goods.goodsSalesPrice}','${goods.goodsFileName}' , '${goods.goodsDeliveryPrice}')">구매하기 </a></li>
+			<li><a class="buy" href="javascript:fn_order_each_goods('${goods.goodsId}','${goods.goodsTitle}','${goods.goodsSalesPrice}','${goods.goodsFileName}' , '${goods.goodsDeliveryPrice}', ${goods.goodsPoint }, ${salesPercent })">구매하기 </a></li>
 		</ul>
 	</div>
 	<div class="clear"></div>

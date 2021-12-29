@@ -36,9 +36,9 @@
 			<li>
 				<h3>목록 보기</h3>
 				<ul>
-					<li><a href="${contextPath}/main/main.do">베스트셀러</a></li>
-					<li><a href="${contextPath}/main/main.do">스테디셀러</a></li>
-					<li><a href="${contextPath}/main/main.do">신간</a></li>
+					<li><a href="${contextPath}/goods/listGoods.do?goodsStatus=bestseller">베스트셀러</a></li>
+					<li><a href="${contextPath}/goods/listGoods.do?goodsStatus=steadyseller">스테디셀러</a></li>
+					<li><a href="${contextPath}/goods/listGoods.do?goodsStatus=newbook">신간</a></li>
 				</ul>
 			</li>
 			<br><br><br>
