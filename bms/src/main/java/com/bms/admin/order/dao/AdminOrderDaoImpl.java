@@ -34,4 +34,8 @@ public class AdminOrderDaoImpl implements AdminOrderDao{
 		return sqlSession.selectOne("mapper.admin.order.selectOrderer" , memberId);
 	}
 
+	public void deleteOrderInfo(int goodsId) throws Exception {
+		sqlSession.delete("mapper.admin.order.deleteOrderInfo", goodsId);
+	}
+
 }

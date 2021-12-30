@@ -35,6 +35,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bms.admin.goods.service.AdminGoodsService;
+import com.bms.admin.order.service.AdminOrderService;
 import com.bms.common.file.FileController;
 import com.bms.common.util.CommonUtil;
 import com.bms.goods.dto.GoodsDto;
@@ -58,6 +59,9 @@ public class AdminGoodsController {
 	
 	@Autowired
 	private CommonUtil commonUtil;
+	
+	@Autowired
+	private AdminOrderService adminOrderService;
 	
 	@RequestMapping(value="/adminGoodsMain.do" , method = RequestMethod.GET)
 	public ModelAndView adminGoodsMain(@RequestParam Map<String, String> dateMap , HttpServletRequest request)  throws Exception {
@@ -281,10 +285,12 @@ public class AdminGoodsController {
 	@RequestMapping(value="/deleteGoods.do", method=RequestMethod.GET)
 	public ResponseEntity<String> deleteGoods(@RequestParam("goodsId") int goodsId, HttpServletRequest request) throws Exception {
 		
-		adminGoodsService.deleteGoods(goodsId);
+		adminOrderService.deleteOrder(goodsId);
 		
 		String fileName = Integer.toString(goodsId);
 		fileController.deleteFile(fileName);
+		
+		adminGoodsService.deleteGoods(goodsId);
 		
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/html; charset=utf-8");

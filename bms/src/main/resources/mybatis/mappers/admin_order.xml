@@ -125,4 +125,11 @@
 				MEMBER_ID = #{memberId}
 	</select>	
 	
+	<delete id="deleteOrderInfo">
+		DELETE FROM
+				T_SHOPPING_ORDER
+		WHERE
+				GOODS_ID = #{goodsId}
+	</delete>
+	
 </mapper>

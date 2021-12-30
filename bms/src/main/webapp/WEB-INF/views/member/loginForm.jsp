@@ -34,6 +34,7 @@
 				<td colspan="2" align="right"><input type="submit" class="btn btn-primary btn-sm" value="로그인"></td>
 			</tr>
 		</table>
+		<p align="center"><a href="${contextPath}/member/findAccount.do?find=id">아이디 찾기</a> / <a href="${contextPath}/member/findAccount.do?find=pw">비밀번호 찾기</a></p>
 		<p align="center">
    			<img src="${contextPath }/resources/image/bms_logo1.PNG" width=300>
    		</p>

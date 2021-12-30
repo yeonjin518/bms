@@ -12,5 +12,6 @@ public interface AdminOrderDao {
 	public void updateDeliveryState(Map<String, String> deliveryMap) throws Exception;
 	public Map<String,Object> selectOrderDetail(int orderId) throws Exception;
 	public MemberDto selectOrderer(String memberId) throws Exception;
+	public void deleteOrderInfo(int goodsId) throws Exception;
 	
 }

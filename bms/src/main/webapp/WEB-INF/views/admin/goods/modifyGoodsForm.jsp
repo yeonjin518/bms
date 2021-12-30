@@ -19,6 +19,15 @@
 </c:choose>
 <script>
 
+	$(document).ready(function(){
+		var cnt = $("input[name='detailImage']").length + 1;
+		$("#addImage").click(function(){
+			$("#target_add_file").append("<br>"+"<input type='file' name='detailImage" + cnt + "' id='detailImage" + cnt + "'  onchange=readURL(this,'previewImage" + cnt + "') />");
+			$("#target_add_file").append("<img id='previewImage" + cnt + "' width=200 height=200/>");
+			$("#target_add_file").append("<input class='btn btn-info btn-xs' type='button' value='추가'  onClick=addNewImageFile('detailImage" + cnt + "','${imageFileList[0].goodsId}','detailImage')  />");
+			cnt++;
+		});
+	});
 
 	function fn_modify_goods(goodsId, attribute){
 		
@@ -78,13 +87,13 @@
 	 }  
 	
 		 
-	 var cnt = 1;
-	 function fn_addFile(){
-		  $("#target_add_file").append("<br>"+"<input type='file' name='detailImage" + cnt + "' id='detailImage" + cnt + "'  onchange=readURL(this,'previewImage" + cnt + "') />");
-		  $("#target_add_file").append("<img id='previewImage" + cnt + "' width=200 height=200/>");
-		  $("#target_add_file").append("<input class='btn btn-info btn-xs' type='button' value='추가'  onClick=addNewImageFile('detailImage" + cnt + "','${imageFileList[0].goodsId}','detailImage')  />");
-		  cnt++;
-	 }
+	 //var cnt = 1;
+	// function fn_addFile(){
+	//	  $("#target_add_file").append("<br>"+"<input type='file' name='detailImage" + cnt + "' id='detailImage" + cnt + "'  onchange=readURL(this,'previewImage" + cnt + "') />");
+	//	  $("#target_add_file").append("<img id='previewImage" + cnt + "' width=200 height=200/>");
+	//	  $("#target_add_file").append("<input class='btn btn-info btn-xs' type='button' value='추가'  onClick=addNewImageFile('detailImage" + cnt + "','${imageFileList[0].goodsId}','detailImage')  />");
+	//	  cnt++;
+	// }
 	 
 	 
 	 function modifyImageFile(fileId,goodsId, imageId,fileType){
@@ -343,7 +352,7 @@
 										<br>
 									</td>
 									<td>
-										<img id="preview${itemNum.count }" width=200 height=200 src="${contextPath}/download.do?goodsId=${item.goodsId}&fileName=${item.fileName}">
+										<img id="preview${itemNum.count-1 }" width=200 height=200 src="${contextPath}/download.do?goodsId=${item.goodsId}&fileName=${item.fileName}">
 									</td>
 									<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 									<td>
@@ -362,7 +371,7 @@
 				       </td>
 				    </tr>
 					<tr>
-						<td align="right" colspan="5"><input type="button" class="btn btn-outline-primary" value="추가하기" onClick="fn_addFile()" /></td>
+						<td align="right" colspan="5"><input type="button" id="addImage" class="btn btn-outline-primary" value="추가하기" /></td>
 					</tr>
 				</table>
 			</form>

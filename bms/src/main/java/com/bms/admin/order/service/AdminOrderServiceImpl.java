@@ -33,4 +33,9 @@ public class AdminOrderServiceImpl implements AdminOrderService {
 		return adminOrderDao.selectOrderDetail(orderId);
 	}
 
+	@Override
+	public void deleteOrder(int goodsId) throws Exception {
+		adminOrderDao.deleteOrderInfo(goodsId);
+	}
+
 }

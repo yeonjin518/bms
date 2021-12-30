@@ -10,5 +10,6 @@ public interface AdminOrderService {
 	public List<OrderDto>listNewOrder(Map<String,Object> condMap) throws Exception;
 	public void  modifyDeliveryState(Map<String, String> deliveryMap) throws Exception;
 	public Map<String,Object> orderDetail(int orderId) throws Exception;
+	public void deleteOrder(int goodsId) throws Exception;
 	
 }

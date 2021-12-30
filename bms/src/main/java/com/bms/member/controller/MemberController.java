@@ -70,6 +70,15 @@ public class MemberController {
 	
 	}
 	
+	@RequestMapping(value="/findAccount.do", method = RequestMethod.GET)
+	public ModelAndView findAccount() {
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/member/findAccount");
+		
+		return mv;
+	}
+	
 	
 	@RequestMapping(value="/addMember.do" , method = RequestMethod.POST)
 	public ResponseEntity<String> addMember(MemberDto memberDto , HttpServletRequest request) throws Exception {
