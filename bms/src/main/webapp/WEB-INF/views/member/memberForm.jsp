@@ -62,6 +62,11 @@
 				return false;
 			}
 			
+			if($("#tel1").val() == "" || $("#tel2").val() == "" || $("#tel3").val() == ""){
+				alert("핸드폰 번호를 입력하세요.");
+				return false;
+			}
+			
 			if($("#hp1").val() == "" || $("#hp2").val() == "" || $("#hp3").val() == ""){
 				alert("핸드폰 번호를 입력하세요.");
 				return false;

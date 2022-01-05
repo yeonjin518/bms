@@ -49,5 +49,20 @@ public class MemberServiceImpl implements MemberService {
 	public String overlapped(String id) throws Exception{
 		return memberDao.selectOverlappedID(id);
 	}
+
+
+	@Override
+	public String findAccount(Map<String, String> accountMap) throws Exception {
+		
+		String searchId = memberDao.findId(accountMap);
+		
+		if(accountMap.get("find").equals("pw")) {
+			if(!accountMap.get("memberId").equals(searchId)) {
+				return null;
+			}
+		}
+		
+		return searchId;
+	}
 	
 }

@@ -36,7 +36,17 @@ public class OrderController {
 		HttpSession session = request.getSession();
 		
 		MemberDto memberInfo = (MemberDto)session.getAttribute("memberInfo");
+
+		int addPoint = 0;
+		int goodsSalesPrice = Integer.valueOf((String)goodsInfo.get("goodsSalesPrice"));
+		int orderGoodsQty = Integer.valueOf((String)goodsInfo.get("orderGoodsQty"));
+		int goodsDeliveryPrice = Integer.valueOf((String)goodsInfo.get("goodsDeliveryPrice"));
+		int totalPrice = goodsSalesPrice * orderGoodsQty + goodsDeliveryPrice;
+		if(totalPrice >= 50000)	addPoint = 3000;
+		else if(totalPrice >= 10000)	addPoint = 1000;
 		
+		goodsInfo.put("totalPrice", totalPrice);
+		goodsInfo.put("addPoint", addPoint);
 		session.setAttribute("goodsInfo", goodsInfo);
 		session.setAttribute("orderer", memberInfo);
 		mv.addObject("goodsInfo", goodsInfo);
@@ -63,7 +73,7 @@ public class OrderController {
 		String ordererHp = memberDto.getHp1() + "-" + memberDto.getHp2() + "-" + memberDto.getHp3();
 		
 		
-		OrderDto orderDto = new OrderDto();;
+		OrderDto orderDto = new OrderDto();
 		orderDto.setMemberId(memberId);
 		orderDto.setOrdererName(ordererName);
 		orderDto.setGoodsId(Integer.parseInt((String)(goodsInfo.get("goodsId"))));

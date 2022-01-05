@@ -58,6 +58,15 @@
 		
 	}
 	
+	function fn_delivery_method(r_deli){
+		if(r_deli.value == "편의점택배"){
+			$("#totalPoint").text("${goodsInfo.goodsPoint * goodsInfo.orderGoodsQty + goodsInfo.addPoint + 300}원");
+		}
+		else{			
+			$("#totalPoint").text("${goodsInfo.goodsPoint * goodsInfo.orderGoodsQty + goodsInfo.addPoint}원");
+		}
+	}
+	
 	function fn_process_pay_order(){
 		
 		var deliveryAddress = "우편번호:" + $("#zipcode").val() + "<br>"+
@@ -135,10 +144,10 @@
 				</td>
 				<td><h2>${goodsInfo.goodsSalesPrice}원 (${goodsInfo.salesPercent}% 할인)</h2></td>
 				<td><h2>${goodsInfo.goodsDeliveryPrice}원 </h2></td>
-				<td><h2>${goodsInfo.goodsPoint * goodsInfo.orderGoodsQty}원</h2></td>
+				<td><h2 id="totalPoint">${goodsInfo.goodsPoint * goodsInfo.orderGoodsQty + goodsInfo.addPoint}원</h2></td>
 				<td>
-				  <h2>${goodsInfo.goodsSalesPrice * goodsInfo.orderGoodsQty + goodsInfo.goodsDeliveryPrice}원</h2>
-				  <input type="hidden" id="totalOrderGoodsPrice" value="${goodsInfo.goodsSalesPrice * goodsInfo.orderGoodsQty + goodsInfo.goodsDeliveryPrice}">
+				  <h2>${goodsInfo.totalPrice}원</h2>
+				  <input type="hidden" id="totalOrderGoodsPrice" value="${goodsInfo.totalPrice}">
 				</td>
 			</tr>
 		</tbody>
@@ -166,9 +175,9 @@
 				<tr class="dot_line">
 					<td class="fixed_join">배송방법</td>
 					<td>
-					    <input type="radio" id="deliveryMethod" name="deliveryMethod" value="일반택배" checked> 일반택배 &emsp; 
-						<input type="radio" id="deliveryMethod" name="deliveryMethod" value="편의점택배"> 편의점택배 &emsp;
-						<input type="radio" id="deliveryMethod" name="deliveryMethod" value="해외배송"> 해외배송 &emsp;
+					    <input type="radio" id="deliveryMethod" name="deliveryMethod" value="일반택배" onclick="fn_delivery_method(this)" checked> 일반택배 &emsp; 
+						<input type="radio" id="deliveryMethod" name="deliveryMethod" value="편의점택배" onclick="fn_delivery_method(this)"> 편의점택배 &emsp;
+						<input type="radio" id="deliveryMethod" name="deliveryMethod" value="해외배송" onclick="fn_delivery_method(this)"> 해외배송 &emsp;
 				    </td>
 				</tr>
 				<tr class="dot_line">

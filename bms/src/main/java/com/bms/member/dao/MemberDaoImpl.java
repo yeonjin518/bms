@@ -28,6 +28,11 @@ public class MemberDaoImpl implements MemberDao{
 	public String selectOverlappedID(String id) throws Exception{
 		return sqlSession.selectOne("mapper.member.selectOverlappedID" , id);
 	}
+
+	@Override
+	public String findId(Map<String, String> accountMap) throws Exception {
+		return sqlSession.selectOne("mapper.member.findId", accountMap);
+	}
 	
 	
 }

@@ -74,7 +74,26 @@ public class MemberController {
 	public ModelAndView findAccount() {
 		
 		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/member/findForm");
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="/findAccount.do", method = RequestMethod.POST)
+	public ModelAndView findAccount(@RequestParam Map<String, String> accountMap) throws Exception {
+		
+		ModelAndView mv = new ModelAndView();
+		
+		if(accountMap.containsKey("hp1") && accountMap.containsKey("hp2") && accountMap.containsKey("hp3")) {
+			accountMap.put("findMethod", "hp");
+		}
+		else if(accountMap.containsKey("email1") && accountMap.containsKey("email2")) {
+			accountMap.put("findMethod", "email");
+		}
+		
 		mv.setViewName("/member/findAccount");
+		mv.addObject("find", accountMap.get("find"));
+		mv.addObject("memberId", memberService.findAccount(accountMap));
 		
 		return mv;
 	}

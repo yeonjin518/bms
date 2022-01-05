@@ -219,6 +219,17 @@ public class MyPageController  {
 		return mv;
 		
 	}
+	
+	@RequestMapping(value="/changePassword.do", method=RequestMethod.POST)
+	public ResponseEntity changePassword(@RequestParam("attribute")  String attribute , @RequestParam("value")  String value , String memberId, HttpServletRequest request)  throws Exception {
+		Map<String, String> memberMap = new HashMap<String, String>();
+		memberMap.put("memberPw" , passwordEncoder.encode(value));
+		memberMap.put("memberId", memberId);
+		
+		myPageService.modifyMyInfo(memberMap);
+		
+		return new ResponseEntity<String>("modSuccess", new HttpHeaders(), HttpStatus.OK);
+	}
 		
 	
 }
