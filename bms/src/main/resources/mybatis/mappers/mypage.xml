@@ -89,22 +89,27 @@
 		  SELECT 
 		  			* 
 		  FROM 
-		  			T_SHOPPING_ORDER
+		  			T_SHOPPING_ORDER O
+		  				INNER JOIN T_SHOPPING_GOODS G
+		  					ON O.GOODS_ID = G.GOODS_ID
+		  				INNER JOIN T_GOODS_DETAIL_IMAGE D
+	    			  		  ON G.GOODS_ID = D.GOODS_ID
+	    			  		 AND D.FILE_TYPE = 'main_image'
           <where> 
-					MEMBER_ID = #{memberId} AND 
+					O.MEMBER_ID = #{memberId} AND 
 					TO_CHAR(PAY_ORDER_TIME,'yyyy-mm-dd') BETWEEN #{beginDate} AND #{endDate}
-					<if test='searchType == "all"'>
-	                  AND (RECEIVER_NAME 	like '%'|| #{searchWord} || '%'
+					<if test='searchType == "all".toString()'>
+	                  AND (RECEIVER_NAME	like '%'|| #{searchWord} || '%'
 	                   OR ORDERER_NAME 	like '%'|| #{searchWord} || '%'
 	                   OR ORDER_ID 	like '%'|| #{searchWord} || '%')
 	                </if>
-	                <if test='searchType == "receiverName"'>
+	                <if test='searchType == "receiverName".toString()'>
 	                  AND RECEIVER_NAME LIKE '%'|| #{searchWord} || '%'
 	                </if>
-	                <if test='searchType == "ordererName"'>
+	                <if test='searchType == "ordererName".toString()'>
 	                  AND ORDERER_NAME LIKE '%'|| #{searchWord} || '%'
 	                </if>
-	                <if test='searchType == "orderId"'>
+	                <if test='searchType == "orderId".toString()'>
 	                   AND ORDER_ID LIKE '%'|| #{searchWord} || '%'
 	                </if>
 		  </where>

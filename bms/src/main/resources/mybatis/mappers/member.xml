@@ -60,6 +60,9 @@
   	FROM
   			T_SHOPPING_MEMBER
   	<where>
+  		<if test='find == "pw"'>
+  			MEMBER_ID = #{memberId} AND
+  		</if>
   		<if test='findMethod == "hp"'>
   			HP1 = #{hp1} AND HP2 = #{hp2} AND HP3 = #{hp3}
   		</if>
