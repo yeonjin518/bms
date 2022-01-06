@@ -105,6 +105,9 @@ public class MyPageController  {
 		
 		dateMap.put("memberId" , memberId);
 		List<OrderDto> myOrderHistList = myPageService.listMyOrderHistory(dateMap);
+		for (OrderDto orderDto : myOrderHistList) {
+			System.out.println(orderDto);
+		}
 		
 		String beginDate1[] = beginDate.split("-");
 		String endDate1[]   = endDate.split("-");

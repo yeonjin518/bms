@@ -1,5 +1,6 @@
 package com.bms.member.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -30,8 +31,8 @@ public class MemberDaoImpl implements MemberDao{
 	}
 
 	@Override
-	public String findId(Map<String, String> accountMap) throws Exception {
-		return sqlSession.selectOne("mapper.member.findId", accountMap);
+	public List<String> findId(Map<String, String> accountMap) throws Exception {
+		return sqlSession.selectList("mapper.member.findId", accountMap);
 	}
 	
 	

@@ -183,7 +183,7 @@
 				<tr>
 					<td align="center">비밀번호</td>
 					<td>
-					  <input name="memberPw" type="password" class="form-control" value="${memberInfo.memberPw }" />
+					  <input name="memberPw" type="password" class="form-control" value="" />
 					</td>
 					<td>
 					  <input type="button" value="수정" class="btn btn-outline-primary btn-sm"  onClick="fn_modify_member_info('${memberInfo.memberId }','memberPw')" />

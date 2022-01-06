@@ -1,5 +1,6 @@
 package com.bms.member.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,15 +53,9 @@ public class MemberServiceImpl implements MemberService {
 
 
 	@Override
-	public String findAccount(Map<String, String> accountMap) throws Exception {
+	public List<String> findAccount(Map<String, String> accountMap) throws Exception {
 		
-		String searchId = memberDao.findId(accountMap);
-		
-		if(accountMap.get("find").equals("pw")) {
-			if(!accountMap.get("memberId").equals(searchId)) {
-				return null;
-			}
-		}
+		List<String> searchId = memberDao.findId(accountMap);
 		
 		return searchId;
 	}

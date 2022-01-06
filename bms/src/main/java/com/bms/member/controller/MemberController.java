@@ -1,5 +1,6 @@
 package com.bms.member.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -93,7 +94,19 @@ public class MemberController {
 		
 		mv.setViewName("/member/findAccount");
 		mv.addObject("find", accountMap.get("find"));
-		mv.addObject("memberId", memberService.findAccount(accountMap));
+		List<String> memberId = memberService.findAccount(accountMap);
+		if(accountMap.get("find").equals("id")) {
+			mv.addObject("memberId", memberId);
+		}
+		else {
+			if(memberId.size() == 0) {
+				mv.addObject("memberId", null);
+			}
+			else {
+				String member = memberId.get(0);
+				mv.addObject("memberId", member);
+			}
+		}
 		
 		return mv;
 	}

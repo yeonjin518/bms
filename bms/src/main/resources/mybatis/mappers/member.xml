@@ -61,13 +61,13 @@
   			T_SHOPPING_MEMBER
   	<where>
   		<if test='find == "pw"'>
-  			MEMBER_ID = #{memberId} AND
+  			MEMBER_ID = #{memberId}
   		</if>
   		<if test='findMethod == "hp"'>
-  			HP1 = #{hp1} AND HP2 = #{hp2} AND HP3 = #{hp3}
+  			AND HP1 = #{hp1} AND HP2 = #{hp2} AND HP3 = #{hp3}
   		</if>
   		<if test='findMethod == "email"'>
-  			EMAIL1 = #{email1} AND EMAIL2 = #{email2}
+  			AND EMAIL1 = #{email1} AND EMAIL2 = #{email2}
   		</if>
   	</where>
   </select>

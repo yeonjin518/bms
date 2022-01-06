@@ -98,18 +98,18 @@
           <where> 
 					O.MEMBER_ID = #{memberId} AND 
 					TO_CHAR(PAY_ORDER_TIME,'yyyy-mm-dd') BETWEEN #{beginDate} AND #{endDate}
-					<if test='searchType == "all".toString()'>
+					<if test='searchType == "all"'>
 	                  AND (RECEIVER_NAME	like '%'|| #{searchWord} || '%'
 	                   OR ORDERER_NAME 	like '%'|| #{searchWord} || '%'
 	                   OR ORDER_ID 	like '%'|| #{searchWord} || '%')
 	                </if>
-	                <if test='searchType == "receiverName".toString()'>
+	                <if test='searchType == "receiverName"'>
 	                  AND RECEIVER_NAME LIKE '%'|| #{searchWord} || '%'
 	                </if>
-	                <if test='searchType == "ordererName".toString()'>
+	                <if test='searchType == "ordererName"'>
 	                  AND ORDERER_NAME LIKE '%'|| #{searchWord} || '%'
 	                </if>
-	                <if test='searchType == "orderId".toString()'>
+	                <if test='searchType == "orderId"'>
 	                   AND ORDER_ID LIKE '%'|| #{searchWord} || '%'
 	                </if>
 		  </where>

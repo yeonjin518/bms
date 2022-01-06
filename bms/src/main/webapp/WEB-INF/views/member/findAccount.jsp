@@ -37,7 +37,7 @@
 	
 </script>
 <style>
-	td:first-child {
+	td {
 		text-align: center;
 		font-weight: bold;
 	}
@@ -63,11 +63,19 @@
 				<table class="table table-hover">
 					<tr>
 						<td align="center">
-							<p>고객님의 아이디는 ${memberId } 입니다.</p>
+							<p>고객님의 아이디는 </p>
+						</td>
+						<td>
+							<c:forEach var="member" items="${memberId }">
+								<p>${member }</p>
+							</c:forEach>
+						</td>
+						<td align="center">
+							<p>입니다.</p>
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2" align="right"><input type="button" class="btn btn-primary btn-sm" value="비밀번호 찾기" onClick="location.href='${contextPath}/member/findAccount.do'"></td>
+						<td colspan="3" align="right"><input type="button" class="btn btn-primary btn-sm" value="비밀번호 찾기" onClick="location.href='${contextPath}/member/findAccount.do'"></td>
 					</tr>
 				  </table>	
 				</div>

@@ -7,8 +7,12 @@
 <script>
 
 	$().ready(function(){
-		$("#select_email").change(function(){
-			$("#email2").val($("#select_email option:selected").val());
+		$("#select_email1").change(function(){
+			$("#email2").val($("#select_email1 option:selected").val());
+		});
+		
+		$("#select_email2").change(function(){
+			$("#email5").val($("#select_email2 option:selected").val());
 		});
 
 	});
@@ -62,12 +66,12 @@
 				return false;
 			}
 			if($("#findHp2").prop("checked")){
-				if($("#hp2").val() == "" || $("#hp3").val() == ""){
+				if($("#hp5").val() == "" || $("#hp6").val() == ""){
 					alert("휴대폰 번호를 입력해주세요.");
 					return false;
 				}
 			} else if($("#findEmail2").prop("checked")){
-				if($("#email1").val() == "" || $("#email2").val() == ""){
+				if($("#email4").val() == "" || $("#email5").val() == ""){
 					alert("이메일을 입력해주세요.");
 					return false;
 				}
@@ -121,7 +125,7 @@
 							<td>
 					        	<input class="form-control"  size="10px"  type="text" id="email1" name="email1" style="display:inline; width:100px; padding:0" disabled> @ 
 									<input class="form-control"  size="10px"  type="text" id="email2" name="email2" style="display:inline; width:100px; padding:0" disabled>
-									<select class="form-control" id="select_email" name="email3" style="display:inline; width:100px; padding:0" disabled>
+									<select class="form-control" id="select_email1" name="email3" style="display:inline; width:100px; padding:0" disabled>
 										 <option value="" selected>직접입력</option>
 										 <option value="gmail.com">gmail.com</option>
 										 <option value="naver.com">naver.com</option>
@@ -152,7 +156,7 @@
 								<tr>
 									<td align="center"><input id="findHp2" class="findHp" name="findPw" type="radio" value="find_hp" onclick="en_find_id(frm_find_account2, this)" checked><label for="findHp2">휴대폰으로 찾기</label></td>
 									<td>
-										<select class="form-control" id="hp1" name="hp1" style="display:inline; width:70px; padding:0">
+										<select class="form-control" id="hp4" name="hp1" style="display:inline; width:70px; padding:0">
 											<option selected value="010">010</option>
 											<option value="011">011</option>
 											<option value="016">016</option>
@@ -160,16 +164,16 @@
 											<option value="018">018</option>
 											<option value="019">019</option>
 										</select> - 
-										<input class="form-control"  size="10px"  type="text" id="hp2" name="hp2" style="display:inline; width:100px; padding:0"> - 
-										<input class="form-control"  size="10px"  type="text" id="hp3" name="hp3" style="display:inline; width:100px; padding:0">
+										<input class="form-control"  size="10px"  type="text" id="hp5" name="hp2" style="display:inline; width:100px; padding:0"> - 
+										<input class="form-control"  size="10px"  type="text" id="hp6" name="hp3" style="display:inline; width:100px; padding:0">
 									</td>
 								</tr>
 								<tr>
 									<td><input id="findEmail2" class="findEmail" name="findPw" type="radio" value="find_email" onclick="en_find_id(frm_find_account2, this)"><label for="findEmail2">이메일로 찾기</label></td>
 									<td>
-							        	<input class="form-control"  size="10px"  type="text" id="email1" name="email1" style="display:inline; width:100px; padding:0" disabled> @ 
-											<input class="form-control"  size="10px"  type="text" id="email2" name="email2" style="display:inline; width:100px; padding:0" disabled>
-											<select class="form-control" id="select_email" name="email3" style="display:inline; width:100px; padding:0" disabled>
+							        	<input class="form-control"  size="10px"  type="text" id="email4" name="email1" style="display:inline; width:100px; padding:0" disabled> @ 
+											<input class="form-control"  size="10px"  type="text" id="email5" name="email2" style="display:inline; width:100px; padding:0" disabled>
+											<select class="form-control" id="select_email2" name="email3" style="display:inline; width:100px; padding:0" disabled>
 												 <option value="" selected>직접입력</option>
 												 <option value="gmail.com">gmail.com</option>
 												 <option value="naver.com">naver.com</option>

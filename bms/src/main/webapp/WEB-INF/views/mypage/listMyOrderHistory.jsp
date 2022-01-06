@@ -266,13 +266,13 @@
 				<td>주문취소</td>
 			</tr>
 	   		<c:choose>
-		     <c:when test="${empty myOrderHistList }">			
+		     <c:when test="${empty myOrderHistList}">			
 				<tr>
 			       <td colspan=8 class="fixed"><strong>주문한 상품이 없습니다.</strong></td>
 			     </tr>
 			 </c:when>
 			 <c:otherwise> 
-			     <c:forEach var="item" items="${myOrderHistList }">
+			     <c:forEach var="item" items="${myOrderHistList}">
 		            <tr>       
 						<td><strong>${item.orderId }</strong></td>
 						<td> 
