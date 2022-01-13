@@ -55,11 +55,6 @@ public class AdminGoodsDaoImpl  implements AdminGoodsDao{
 	}
 	
 	@Override
-	public void deleteGoodsImage(int imageId) throws Exception{
-		sqlSession.delete("mapper.admin.goods.deleteGoodsImage" , imageId);
-	}
-	
-	@Override
 	public void updateGoodsImage(List<ImageFileDto> imageFileList) throws Exception {
 		for (ImageFileDto imageFileDto : imageFileList) {
 			sqlSession.update("mapper.admin.goods.updateGoodsImage" , imageFileDto);	
@@ -72,6 +67,11 @@ public class AdminGoodsDaoImpl  implements AdminGoodsDao{
 		sqlSession.delete("mapper.admin.goods.deleteGoodsInfo", goodsId);
 	}
 
+	@Override
+	public void deleteGoodsImage(int imageId) throws Exception{
+		sqlSession.delete("mapper.admin.goods.deleteGoodsImage" , imageId);
+	}
+	
 	
 
 }

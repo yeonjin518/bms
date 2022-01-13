@@ -84,8 +84,8 @@ public class MyPageController  {
 		HttpSession session = request.getSession();
 		MemberDto memberDto = (MemberDto)session.getAttribute("memberInfo");
 		String memberId = "";
-		if (memberDto.getMemberId() != null)
-			memberId = memberDto.getMemberId();
+		if (memberDto != null)	memberId = memberDto.getMemberId();
+		else 					mv.setViewName("redirect:/main/main.do");
 		
 		String fixedSearchPeriod = dateMap.get("fixedSearchPeriod");
 		String beginDate = "";
