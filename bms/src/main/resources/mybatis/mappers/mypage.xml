@@ -97,24 +97,24 @@
 	    			  		 AND D.FILE_TYPE = 'main_image'
           <where> 
 					O.MEMBER_ID = #{memberId} AND 
-					TO_CHAR(PAY_ORDER_TIME,'yyyy-mm-dd') BETWEEN #{beginDate} AND #{endDate}
+					TO_CHAR(O.PAY_ORDER_TIME,'yyyy-mm-dd') BETWEEN #{beginDate} AND #{endDate}
 					<if test='searchType == "all"'>
-	                  AND (RECEIVER_NAME	like '%'|| #{searchWord} || '%'
-	                   OR ORDERER_NAME 	like '%'|| #{searchWord} || '%'
-	                   OR ORDER_ID 	like '%'|| #{searchWord} || '%')
+	                  AND (O.RECEIVER_NAME	LIKE '%'||#{searchWord}||'%'
+	                   OR O.ORDERER_NAME 	LIKE '%'||#{searchWord}||'%'
+	                   OR O.ORDER_ID 	LIKE '%'||#{searchWord}||'%')
 	                </if>
 	                <if test='searchType == "receiverName"'>
-	                  AND RECEIVER_NAME LIKE '%'|| #{searchWord} || '%'
+	                  AND O.RECEIVER_NAME LIKE '%'||#{searchWord}||'%'
 	                </if>
 	                <if test='searchType == "ordererName"'>
-	                  AND ORDERER_NAME LIKE '%'|| #{searchWord} || '%'
+	                  AND O.ORDERER_NAME LIKE '%'||#{searchWord}||'%'
 	                </if>
 	                <if test='searchType == "orderId"'>
-	                   AND ORDER_ID LIKE '%'|| #{searchWord} || '%'
+	                   AND O.ORDER_ID LIKE '%'||#{searchWord}||'%'
 	                </if>
 		  </where>
           ORDER BY 
-          			PAY_ORDER_TIME DESC
+          			O.PAY_ORDER_TIME DESC
 	</select>	
 	
 	<update id="updateMyInfo" parameterType="hashmap">
