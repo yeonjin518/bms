@@ -22,6 +22,7 @@ public class CommonUtil  {
 		DecimalFormat df = new DecimalFormat("00");
 		Calendar cal = Calendar.getInstance();
 		
+		
 		endYear   = Integer.toString(cal.get(Calendar.YEAR));
 		endMonth  = df.format(cal.get(Calendar.MONTH) + 1);
 		endDay    = df.format(cal.get(Calendar.DATE));
@@ -42,6 +43,24 @@ public class CommonUtil  {
 		
 		return beginDate + "," + endDate;
 		
+	}
+	
+	public String calcToday() {
+		
+		String todayDate  = "";
+		String todayYear  = "";
+		String todayMonth = "";
+		String todayDay   = "";
+		
+		DecimalFormat df = new DecimalFormat("00");
+		Calendar cal = Calendar.getInstance();
+		
+		todayYear   = Integer.toString(cal.get(Calendar.YEAR));
+		todayMonth  = df.format(cal.get(Calendar.MONTH) + 1);
+		todayDay    = df.format(cal.get(Calendar.DATE));
+		todayDate   = todayYear + "-" + todayMonth + "-" + todayDay;
+		
+		return todayDate;
 	}
 	
 }

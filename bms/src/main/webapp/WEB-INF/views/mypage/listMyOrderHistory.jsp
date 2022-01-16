@@ -108,16 +108,16 @@
 						오늘 일자 &nbsp;&nbsp;
 					    <select name="curYear" disabled>
 					      <c:forEach var="i" begin="0" end="5" >
-					        <option value="${endYear}" <c:if test="${endYear==endYear-i }"> selected </c:if>>${endYear}</option>
+					        <option value="${todayYear}" <c:if test="${todayYear==todayYear-i }"> selected </c:if>>${todayYear}</option>
 					      </c:forEach>
 					    </select>년 <select name="curMonth" disabled>
 						  <c:forEach var="i" begin="1" end="12">
-					        <option value="${i }" <c:if test="${endMonth==i }"> selected </c:if>>${i }</option>
+					        <option value="${i }" <c:if test="${todayMonth==i }"> selected </c:if>>${i }</option>
 					      </c:forEach>					
 					    </select>월
 					    <select name="curDay" disabled>
 					      <c:forEach var="i" begin="1" end="31">
-					  	    <option value="${i }"  <c:if test="${endDay==i }"> selected </c:if>>${i }</option>
+					  	    <option value="${i }"  <c:if test="${todayDay==i }"> selected </c:if>>${i }</option>
 					      </c:forEach>	
 					    </select>일 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 					    <input type="button" value="당일"  onclick="search_order_history('today')">
@@ -135,11 +135,11 @@
 						<select name="beginYear" disabled>
 						 <c:forEach var="i" begin="0" end="5">
 						      <c:choose>
-						        <c:when test="${beginYear==beginYear-i }">
-						          <option value="${beginYear-i }" selected>${beginYear-i  }</option>
+						        <c:when test="${beginYear==todayYear-i }">
+						          <option value="${todayYear-i }" selected>${todayYear-i  }</option>
 						        </c:when>
 						        <c:otherwise>
-						          <option value="${beginYear-i }">${beginYear-i }</option>
+						          <option value="${todayYear-i }">${todayYear-i }</option>
 						        </c:otherwise>
 						      </c:choose>
 						    </c:forEach>
@@ -199,11 +199,11 @@
 						<select name="endYear" disabled >
 						 <c:forEach var="i" begin="0" end="5">
 						      <c:choose>
-						        <c:when test="${endYear==endYear-i }">
-						          <option value="${endYear-i }" selected>${endYear-i  }</option>
+						        <c:when test="${endYear==todayYear-i }">
+						          <option value="${todayYear-i }" selected>${todayYear-i  }</option>
 						        </c:when>
 						        <c:otherwise>
-						          <option value="${endYear-i }">${endYear-i }</option>
+						          <option value="${todayYear-i }">${todayYear-i }</option>
 						        </c:otherwise>
 						      </c:choose>
 						    </c:forEach>

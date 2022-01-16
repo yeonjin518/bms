@@ -90,11 +90,12 @@ public class MyPageController  {
 		String fixedSearchPeriod = dateMap.get("fixedSearchPeriod");
 		String beginDate = "";
 		String endDate   = "";
+		String todayDate = "";
 		
 		if(dateMap.get("beginDate") == null && dateMap.get("endDate") == null) {
 			String [] tempDate = commonUtil.calcSearchPeriod(fixedSearchPeriod).split(",");
 			beginDate = tempDate[0];
-			endDate   = tempDate[1];			
+			endDate   = tempDate[1];
 			dateMap.put("beginDate" , beginDate);
 			dateMap.put("endDate" , endDate);
 		}
@@ -103,17 +104,23 @@ public class MyPageController  {
 			endDate = dateMap.get("endDate");
 		}
 		
+		todayDate = commonUtil.calcToday();
+		
 		dateMap.put("memberId" , memberId);
 		List<OrderDto> myOrderHistList = myPageService.listMyOrderHistory(dateMap);
 		
 		String beginDate1[] = beginDate.split("-");
 		String endDate1[]   = endDate.split("-");
+		String todayDate1[] = todayDate.split("-");
 		mv.addObject("beginYear"  , beginDate1[0]);
 		mv.addObject("beginMonth" , beginDate1[1]);
 		mv.addObject("beginDay"   , beginDate1[2]);
 		mv.addObject("endYear"    , endDate1[0]);
 		mv.addObject("endMonth"   , endDate1[1]);
 		mv.addObject("endDay"     , endDate1[2]);
+		mv.addObject("todayYear"  , todayDate1[0]);
+		mv.addObject("todayMonth"  , todayDate1[1]);
+		mv.addObject("todayDay"  , todayDate1[2]);
 		mv.addObject("myOrderHistList" , myOrderHistList);
 		
 		return mv;

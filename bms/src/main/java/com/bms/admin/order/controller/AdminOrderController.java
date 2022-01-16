@@ -60,6 +60,7 @@ public class AdminOrderController {
 		String [] tempDate       = null; 
 		String beginDate         = "";
 		String endDate           = "";
+		String todayDate		 = "";
 		
 		if (dateMap.get("beginDate") == null && dateMap.get("endDate") == null ) {
 			tempDate = commonUtil.calcSearchPeriod(fixedSearchPeriod).split(",");
@@ -71,6 +72,7 @@ public class AdminOrderController {
 			endDate = dateMap.get("endDate");
 		}
 		
+		todayDate = commonUtil.calcToday();
 		
 		Map<String,Object> condMap = new HashMap<String,Object>();
 		
@@ -85,6 +87,7 @@ public class AdminOrderController {
 		
 		String beginDate1[] = beginDate.split("-");
 		String endDate2[] = endDate.split("-");
+		String todayDate3[] = todayDate.split("-");
 		mv.addObject("beginYear",beginDate1[0]);
 		mv.addObject("beginMonth",beginDate1[1]);
 		mv.addObject("beginDay",beginDate1[2]);
@@ -92,6 +95,10 @@ public class AdminOrderController {
 		mv.addObject("endYear",endDate2[0]);
 		mv.addObject("endMonth",endDate2[1]);
 		mv.addObject("endDay",endDate2[2]);
+		
+		mv.addObject("todayYear",todayDate3[0]);
+		mv.addObject("todayMonth",todayDate3[1]);
+		mv.addObject("todayDay",todayDate3[2]);
 		
 		return mv;
 		
