@@ -6,7 +6,7 @@
 <tiles-definitions>
 
 	<definition name="/goods/goodsDetail" extends="baseLayout">
-        <put-attribute name="title" value="" />
+        <put-attribute name="title" value="상품 정보 페이지" />
         <put-attribute name="body" value="/WEB-INF/views/goods/goodsDetail.jsp" />
      </definition>  
      
